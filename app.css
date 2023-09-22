@@ -154,11 +154,26 @@
 
 
 
+
+
+/***********
+ * GLOBALS *
+ ***********/
+ :root {
+    --text-color: #312e2e;
+    --error-color: #B71C1C;
+}
+
+
+
+
+
+
 /*************
  * SANITIZER *
  *************/
  *, *::before, *::after { box-sizing: border-box; border:none; background-repeat: no-repeat; padding:0; margin: 0; }
- html {  word-break: break-word; scroll-behavior: smooth; color: #312e2e}
+ html {  word-break: break-word; scroll-behavior: smooth; color: var(--text-color)}
  img { max-width: 100%; }
  ul,ol { list-style: none;padding-left:0;}
  ul li, ol li { margin: 10px 0 10px 0; }
@@ -166,13 +181,6 @@
 
 
 
-
-/***********
- * GLOBALS *
- ***********/
-:root {
-
-}
 
 
 
@@ -271,15 +279,62 @@ body {
 
 
 .form {
-    
+    margin-top:15px;
 }
 
+.form .form-row {
+    display: flex;
+    flex-direction: row;
+    margin-top: 10px;
+}
+
+.form .form-row .form-control {
+    padding: 10px 5px 10px 5px;
+    flex: 1;
+}
+.form .form-row .form-control input {
+    width: 100%;
+    border: 1px solid var(--text-color);
+    padding:7px;
+    margin-top: 10px;
+    border-radius: 4px;
+}
+.form .form-row .form-control label {
+    display: block;
+}
+
+.form .form-row .form-control .error {
+    font-size: 1rem;
+    color: var(--error-color);
+    margin-top:3px;
+}
+.form .form-row .form-control .error .material-symbols-outlined {vertical-align: middle;}
 
 
+.form .form-row .form-control input.errored { border: 2px solid var(--error-color);}
 
 
+.form button {
+    padding:15px;
+    color:white;
+    background-color: var(--text-color);
+    font-weight: bold;
+}
+.form button:hover,
+.form button:active,
+.form button:focus { background-color: #000000; }
+.form button:hover { cursor: pointer;}
+.form button:focus { outline: none; }
 
 
+.form .form-footer {
+    display: block;
+    margin-top: 25px;
+}
+.form .form-footer p {margin-top: 15px;}
+
+.form .form-footer a { color: var(--text-color); font-weight: bold}
+.form .form-footer a:hover { color: #000000; text-decoration: none;}
 
 
 
@@ -299,6 +354,10 @@ body {
 
 
 
+    /* Form Container */
+    .form-container { padding:40px; }
+    .form-container .form-heading h1 { font-size:2rem}
+    .form-container .form-heading p { font-size:1.1rem}
  }
  
  
@@ -311,8 +370,10 @@ body {
  
  
     /* Form Container */
-    .form-container { padding:40px; }
-    .form-container .form-heading h1 { text-align: center; }
+    .form-container { padding:30px; }
+    .form-container .form-heading h1 { text-align: center; font-size:1.8rem}
+    .form-container .form-heading p { font-size:1rem}
+    .form .form-row { margin-top:0px}
  }
  
  
@@ -334,6 +395,7 @@ body {
     /* Form Container */
     .form-container { padding:30px; }
     .form-container .form-heading h1 { text-align: center; }
+    .form .form-row { margin-top:0px}
  }
  
  
@@ -354,6 +416,7 @@ body {
     /* Form Container */
     .form-container { padding:30px; }
     .form-container .form-heading h1 { text-align: center; }
+    .form .form-row { margin-top:0px}
  }
  
  
@@ -374,6 +437,9 @@ body {
     /* Form Container */
     .form-container { padding:30px; }
     .form-container .form-heading h1 { text-align: center; }
+    .form .form-row { flex-direction: column; margin-top:0}
+    .form .form-row input { margin-top:25px}
+    .form .form-footer { text-align: center;}
  }
  
  
@@ -397,4 +463,7 @@ body {
     /* Form Container */
     .form-container { padding:15px; }
     .form-container .form-heading h1 { text-align: center; }
+    .form .form-row { flex-direction: column; margin-top:0}
+    .form .form-row input { margin-top:25px}
+    .form .form-footer { text-align: center; font-size: 0.8rem;}
 }
