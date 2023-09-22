@@ -181,25 +181,31 @@
  ************/
 body {
     font-family: "Montserrat", "Roboto", sans-serif;
-    width: 100%;
-    height: 100vh;
+/*     width:100%;
+    height:100%; */
 }
 
 
 
 
-/*
- *
- */
+/*****************
+ * APP CONTAINER *
+ *****************/
 .app-container {
     display: flex;
     flex-direction: row;
-    align-items: stretch;
-    height:100%;
+    height:100vh;
 }
 
 
-/* Splash Container */
+
+
+
+
+
+/********************
+ * SPLASH CONTAINER *
+ ********************/
 .splash-container {
     flex: 1;
     background-image: url(assets/splash.jpg);
@@ -209,18 +215,15 @@ body {
 
 
 /* Logo Box */
-.splash-container .company-logo-box {
-    background-color: rgba(0,0,0,.6);
-    color: white;
-    margin-top: 100px;
-    padding:50px;
-}
-.splash-container .company-logo-box .logo {
+.splash-container .logo {
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: rgba(0,0,0,.6);
+    color: white;
+    margin-top: 20vh;
 }
-.splash-container .company-logo-box .logo p {
+.splash-container .logo p {
     font-size:72px;
     font-weight: bold;
     margin-left: 15px;
@@ -228,7 +231,6 @@ body {
 
 
 /* Photo Credit */
-
 .photo-credit {
     position: absolute;
     bottom:15px;
@@ -237,6 +239,7 @@ body {
     right: 0;
     margin: 0 auto 0 auto;
     text-align: center;
+    color:white;
 }
 .photo-credit a {
     color:white;
@@ -247,20 +250,29 @@ body {
 .photo-credit a:visited { color:white; }
 
 
-/* Form Container */
+
+
+
+
+/******************
+ * FORM CONTAINER *
+ ******************/
 .form-container {
     flex: 1;
     background-color: #fafafa;
-    font-size: 1.5rem;
-    padding:35px;
+    padding:70px;
 }
-
-
-.form-heading {
+.form-container .form-heading {
 
 }
+.form-container .form-heading h1 { font-size: 2.3rem;font-weight:bold }
+.form-container .form-heading p { margin-top: 25px;font-size: 1.2rem; }
 
 
+
+.form {
+    
+}
 
 
 
@@ -298,6 +310,9 @@ body {
  
  
  
+    /* Form Container */
+    .form-container { padding:40px; }
+    .form-container .form-heading h1 { text-align: center; }
  }
  
  
@@ -306,9 +321,19 @@ body {
   * SCREEN: B/w 768px to 1024px
   */
  @media (min-width: 768px) and (max-width: 1024px) {
+    /* App Container */
+    .app-container { flex-direction: column; } 
+
+    /* Splash Container */
+    .splash-container { min-height:100vh; }
+    .splash-container .logo {margin-top: 15vh;}
  
  
  
+ 
+    /* Form Container */
+    .form-container { padding:30px; }
+    .form-container .form-heading h1 { text-align: center; }
  }
  
  
@@ -317,9 +342,18 @@ body {
   * SCREEN: B/w 768px to 1024px
   */
  @media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+    /* App Container */
+    .app-container { flex-direction: column; } 
+
+    /* Splash Container */
+    .splash-container { min-height:100vh; }
+    .splash-container .logo {margin-top: 15vh;}
  
  
  
+    /* Form Container */
+    .form-container { padding:30px; }
+    .form-container .form-heading h1 { text-align: center; }
  }
  
  
@@ -328,9 +362,18 @@ body {
   * SCREEN: B/w 481px to 767px
   */
  @media (min-width: 481px) and (max-width: 767px) {
+    /* App Container */
+    .app-container { flex-direction: column; } 
+
+    /* Splash Container */
+    .splash-container { min-height:100vh; }
+    .splash-container .logo {margin-top: 15vh;}
  
      
  
+    /* Form Container */
+    .form-container { padding:30px; }
+    .form-container .form-heading h1 { text-align: center; }
  }
  
  
@@ -338,8 +381,20 @@ body {
   * DEVICE: Most of the Smartphones Mobiles (Portrait)
   * SCREEN: 480px to lower resolution mobiles
   */
- @media (max-width: 480px) {
- 
- 
- 
- }
+@media (max-width: 480px) {
+    /* App Container */
+    .app-container { flex-direction: column; } 
+
+    /* Splash Container */
+    .splash-container { min-height:100vh; }
+    .splash-container .logo {margin-top: 15vh;}
+    .splash-container .logo p,
+    .splash-container .logo material-symbols-outlined { font-size:36px; }
+    .splash-container .photo-credit { font-size:0.8rem; }
+
+
+
+    /* Form Container */
+    .form-container { padding:15px; }
+    .form-container .form-heading h1 { text-align: center; }
+}
