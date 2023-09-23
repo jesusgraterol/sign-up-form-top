@@ -10,6 +10,7 @@ export class FormControl {
     #error_el;
 
     // The state of the input
+    pristine = true;
     valid = false;
 
     // The validation function
@@ -31,16 +32,20 @@ export class FormControl {
 
     /**
      * Triggers whenever an input changes. It validates the control and updates its state.
+     * @param changed_input_id
      * @param control_values
      */
-    on_input_changes(control_values) {
+    on_input_changes(changed_input_id, control_values) {
+        // Check the pristine state of the control
+        if (this.pristine && changed_input_id == this.el.id) this.pristine = false;
+
         // Validate the value
         this.valid = this.#validate(control_values);
 
         // Handle the input validity
         if (this.valid) {
             this.#mark_control_as_valid();
-        } else {
+        } else if (!this.pristine) {
             this.#mark_control_as_invalid();
         }
     }
@@ -77,6 +82,8 @@ export class FormControl {
      */
     reset() { 
         this.el.value = "";
+        this.el.blur();
+        this.pristine = true;
         this.valid = false;
     }
 }

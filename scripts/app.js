@@ -25,7 +25,41 @@ class App {
                             /^[a-zA-Z]{2,30}$/.test(control_values["first_name"]);
                 }
             },
-
+            {
+                id: "last_name", 
+                validate_function: (control_values) => {
+                    return  typeof control_values["last_name"] == "string" && 
+                            /^[a-zA-Z]{2,30}$/.test(control_values["last_name"]);
+                }
+            },
+            {
+                id: "email", 
+                validate_function: (control_values) => {
+                    const regex = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+                    return  typeof control_values["email"] == "string" && 
+                    regex.test(control_values["email"]);
+                }
+            },
+            {
+                id: "phone_number", 
+                validate_function: (control_values) => {
+                    return  typeof control_values["phone_number"] == "string" && 
+                            /^\d{6,15}$/.test(control_values["phone_number"]);
+                }
+            },
+            {
+                id: "password", 
+                validate_function: (control_values) => {
+                    return  typeof control_values["password"] == "string" && 
+                            control_values["password"].length >= 6;
+                }
+            },
+            {
+                id: "password_confirmation", 
+                validate_function: (control_values) => {
+                    return  control_values["password"] == control_values["password_confirmation"];
+                }
+            },
         ]);
 
         // Initialize the Modal Instance

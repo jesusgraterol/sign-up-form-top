@@ -32,7 +32,7 @@ export class FormGroup {
         ));
 
         // Subscribe to the input changes
-        this.el.addEventListener("input", (e) => this.#on_input_changes());
+        this.el.addEventListener("input", (e) => this.#on_input_changes(e));
     }
 
 
@@ -44,12 +44,12 @@ export class FormGroup {
      * Triggers whenever an input value changes. It validates each control as well as the whole 
      * group and toggles the state of the submit button.
      */
-    #on_input_changes() {
+    #on_input_changes(e) {
         // Build the control values
         const control_values = this.build_control_values();
 
         // Trigger the change event on all controls
-        this.controls.forEach((control) => control.on_input_changes(control_values));
+        this.controls.forEach((control) => control.on_input_changes(e.target.id, control_values));
 
         // Update the validity of the form group
         this.valid = this.#is_valid();
