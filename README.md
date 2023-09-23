@@ -8,3 +8,7 @@ Project with Vanilla CSS & JavaScript. For more information about this project, 
 A live demo of this solution can be accessed here:
 
 [https://jesusgraterol.github.io/sign_up_form_top/](https://jesusgraterol.github.io/sign_up_form_top/)
+
+A local instance can be served with:
+
+`python3 -m http.server`

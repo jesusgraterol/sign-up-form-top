@@ -13,13 +13,17 @@
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
 
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#000000">
+
     <!-- Stylesheet -->
-    <link rel="stylesheet" href="app.css">
+    <link rel="stylesheet" href="stylesheets/app.css">
 
     <!-- Script -->
-    <script src="app.js" defer></script>
+    <script type="module" src="scripts/app.js" defer></script>
 </head>
 <body>
+    
     <!-- App Container -->
     <div class="app-container">
 
@@ -28,7 +32,7 @@
 
             <!-- Logo -->
                 <div class="logo">
-                <span class="material-symbols-outlined md-72">rocket_launch</span>
+                <span class="md-icon md-72">rocket_launch</span>
                 <p>SPACIFY</p>
             </div>
 
@@ -68,26 +72,27 @@
 
             <!-- Form -->
             <div class="form">
+                
                 <form id="form" novalidate>
 
                     <!-- First & Last Name -->
                     <div class="form-row">
 
                         <div class="form-control">
-                            <label for="first_name" class="error">First Name*</label>
-                            <input type="text" name="first_name" id="first_name" class="errored">
-                            <p class="error">
-                                <span class="material-symbols-outlined">error</span> 
+                            <label for="first_name" id="first_name_label">First Name*</label>
+                            <input type="text" name="first_name" id="first_name">
+                            <p id="first_name_error" class="error">
+                                <span class="md-icon">error</span> 
                                 Enter a valid first name
                             </p>
                         </div>
 
 
                         <div class="form-control">
-                            <label for="last_name" class="error">Last Name*</label>
-                            <input type="text" name="last_name" id="last_name" class="errored">
-                            <p class="error">
-                                <span class="material-symbols-outlined">error</span> 
+                            <label for="last_name" id="last_name_label">Last Name*</label>
+                            <input type="text" name="last_name" id="last_name">
+                            <p id="last_name_error" class="error">
+                                <span class="md-icon">error</span> 
                                 Enter a valid last name
                             </p>
                         </div>
@@ -97,20 +102,20 @@
                     <div class="form-row">
 
                         <div class="form-control">
-                            <label for="email" class="error">Email*</label>
-                             <input type="email" name="email" id="email" class="errored">
-                             <p class="error">
-                                 <span class="material-symbols-outlined">error</span> 
+                            <label for="email" id="email_label">Email*</label>
+                             <input type="email" name="email" id="email">
+                             <p id="email_error" class="error">
+                                 <span class="md-icon">error</span> 
                                  Enter a valid email
                              </p>
                         </div>
 
 
                         <div class="form-control">
-                            <label for="phone_number" class="error">Phone Number*</label>
-                             <input type="text" name="phone_number" id="phone_number" class="errored">
-                             <p class="error">
-                                 <span class="material-symbols-outlined">error</span> 
+                            <label for="phone_number" id="phone_number_label">Phone Number*</label>
+                             <input type="text" name="phone_number" id="phone_number">
+                             <p id="phone_number_error" class="error">
+                                 <span class="md-icon">error</span> 
                                  Enter a valid phone number
                              </p>
                         </div>
@@ -120,23 +125,24 @@
                     <div class="form-row">
 
                         <div class="form-control">
-                            <label for="password" class="error">Password*</label>
-                            <input type="password" name="password" id="password" class="errored">
-                            <p class="error">
-                                <span class="material-symbols-outlined">error</span> 
+                            <label for="password" id="password_label">Password*</label>
+                            <input type="password" name="password" id="password">
+                            <p id="password_error" class="error">
+                                <span class="md-icon">error</span> 
                                 Enter a valid password
                             </p>
                         </div>
 
 
                         <div class="form-control">
-                            <label for="password_confirmation" class="error">Confirm Password*</label>
+                            <label for="password_confirmation" 
+                                    id="password_confirmation_label">Confirm Password*</label>
                              <input 
                              type="password" 
                              name="password_confirmation" 
-                             id="password_confirmation" class="errored">
-                             <p class="error">
-                                 <span class="material-symbols-outlined">error</span> 
+                             id="password_confirmation">
+                             <p id="password_confirmation_error" class="error">
+                                 <span class="md-icon">error</span> 
                                  The passwords don't match
                              </p>
                         </div>
@@ -146,15 +152,48 @@
 
                     <!-- Submission -->
                     <div class="form-footer">
-                        <button type="submit">CREATE ACCOUNT</button>
-
+                        <button type="submit" id="submit_button" disabled>CREATE ACCOUNT</button>
                         <p>Already have an account? <a href="#">Log in</a></p>
                     </div>
+
                 </form>
+
+            </div>
+
+        </div>
+
+
+
+
+        <!-- Modal -->
+        <div id="modal" class="modal">
+
+            <!-- Modal content -->
+            <div class="modal-content">
+
+                <!-- Header -->
+                <div class="modal-content-header">
+                    <p class="modal-title truncate">Application Submitted</p>
+                    <a href="javascript:;" id="modal_close_button"><span class="md-icon">close</span></a>
+                </div>
+
+                <!-- Content -->
+                <div class="modal-internal-content">
+                    <span class="md-icon md-72">rocket_launch</span>
+                    <div class="modal-content-message">
+                        <p>
+                            Your account has been registered successfully and is being evaluated by 
+                            our team. Once this process is complete, we will contact you through 
+                            email.
+                        </p>
+                    </div>
+                </div>
+
             </div>
 
         </div>
 
     </div>
+
 </body>
 </html>
