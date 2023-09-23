@@ -32,13 +32,13 @@
 /*************
  * SANITIZER *
  *************/
- *, *::before, *::after { box-sizing: border-box; border:none; background-repeat: no-repeat; padding:0; margin: 0; }
- html {  word-break: break-word; scroll-behavior: smooth; color: var(--text-color)}
- img { max-width: 100%; }
- ul,ol { list-style: none;padding-left:0;}
- ul li, ol li { margin: 10px 0 10px 0; }
- ul li .material-icons, ol li .material-icons { vertical-align: middle;}
-
+*, *::before, *::after { box-sizing: border-box; border:none; background-repeat: no-repeat; padding:0; margin: 0; }
+html {  word-break: break-word; scroll-behavior: smooth; color: var(--text-color)}
+img { max-width: 100%; }
+ul,ol { list-style: none;padding-left:0;}
+ul li, ol li { margin: 10px 0 10px 0; }
+ul li .material-icons, ol li .material-icons { vertical-align: middle;}
+.truncate { white-space: nowrap;overflow: hidden;text-overflow: ellipsis;}
 
 
 
@@ -179,8 +179,6 @@ body {
 
 
 /* Form Control Error */
-.form .form-row .form-control .error .md-icon {vertical-align: middle;}
-
 .form .form-row .form-control .error-color {
     color: var(--error-color);
 }
@@ -189,10 +187,14 @@ body {
     margin-bottom: -2px;
 }
 .form .form-row .form-control .error {
-    font-size: 1rem;
+
+}
+.form .form-row .form-control .error .md-icon {vertical-align: middle;font-size:1rem;}
+.form .form-row .form-control .error {
+    font-size: 0.8rem;
     color: var(--error-color);
-    margin-top:3px;
-    display: none;
+    margin-top:5px;
+    visibility: hidden;
 }
 
 
@@ -239,9 +241,8 @@ body {
 /*********
  * MODAL *
  *********/
-/* The Modal (background) */
 .modal {
-    display: none; /* Hidden by default */
+    display: none;  /* Hidden by default */
     position: fixed; /* Stay in place */
     z-index: 2; /* Sit on top */
     padding-top: 100px; /* Location of the box */
@@ -278,24 +279,26 @@ body {
     margin-left: auto;
 }
 .modal-content-header a:hover { opacity: 0.5;}
+
 .modal-internal-content {
     margin-top:15px;
+}
+.modal-internal-content .row {
+    margin-top: 15px;
     display: flex;
     flex-direction: row;
-    justify-content: center;
     align-items: center;
 }
-.modal-internal-content .md-icon {
-
+.modal-internal-content .row p:first-child {
+    font-size: 0.8rem;
+    color: #6d6666;
 }
-.modal-internal-content .modal-content-message {
-    margin-left: 15px;
+.modal-internal-content .row p:last-child {
+    max-width: 60%;
 }
-.modal-internal-content .modal-content-message p {
-    font-size: 1rem;
-    color: #665e5e;
+.modal-internal-content .row span {
+    margin: 0 auto;
 }
-
 
 
 

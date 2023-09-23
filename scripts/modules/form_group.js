@@ -3,11 +3,13 @@ import { FormControl } from "./form_control.js";
 
 /**
  * Form Group
- * ...
+ * The FormGroup instance manages all of the controls and it keeps track of the whole state of 
+ * the form.
  */
 export class FormGroup {
-    // Form Element
+    // Form & Submit Button Element
     el;
+    #submit_button_el;
 
     // List of FormControl Instances
     controls;
@@ -20,6 +22,8 @@ export class FormGroup {
     constructor(form_id, partial_controls) {
         // Initialize the element's instance
         this.el = document.getElementById(form_id);
+        this.#submit_button_el = document.getElementById("submit_button");
+
 
         // Initialize the controls' instances
         this.controls = partial_controls.map((control) => new FormControl(
@@ -28,16 +32,34 @@ export class FormGroup {
         ));
 
         // Subscribe to the input changes
-        this.el.addEventListener("input", (e) => {
-            // Build the control values
-            const control_values = this.#build_control_values();
+        this.el.addEventListener("input", (e) => this.#on_input_changes());
+    }
 
-            // Trigger the change event on all controls
-            this.controls.forEach((control) => control.on_input_changes(
-                control.el.value,
-                control_values
-            ));
-        });
+
+
+
+
+
+    /**
+     * Triggers whenever an input value changes. It validates each control as well as the whole 
+     * group and toggles the state of the submit button.
+     */
+    #on_input_changes() {
+        // Build the control values
+        const control_values = this.build_control_values();
+
+        // Trigger the change event on all controls
+        this.controls.forEach((control) => control.on_input_changes(control_values));
+
+        // Update the validity of the form group
+        this.valid = this.#is_valid();
+
+        // If the form is valid, enable the submit button. Otherwise, disable it
+        if (this.valid) {
+            this.#submit_button_el.removeAttribute("disabled", "true");
+        } else {
+            this.#submit_button_el.setAttribute("disabled", "true");
+        }
     }
 
 
@@ -47,14 +69,15 @@ export class FormGroup {
 
     /**
      * Builds the control values object for all the registered controls.
-     * @returns object
+     * @returns object {[control_name]: string|number|boolean}
      */
-    #build_control_values() {
+    build_control_values() {
         return this.controls.reduce((accum, current) => {
             accum[current.el.id] = current.el.value;
             return accum;
         }, {});
     }
+
 
 
 
@@ -70,7 +93,11 @@ export class FormGroup {
 
 
     /**
-     * Resets the value of all the controls.
+     * Resets the value of all the controls as well as their states.
      */
-    reset() { this.controls.forEach((control) => control.reset()) }
+    reset() { 
+        this.controls.forEach((control) => control.reset());
+        this.#submit_button_el.setAttribute("disabled", "true");
+        this.valid = false;
+    }
 }

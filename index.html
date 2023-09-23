@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
     <!-- Charset -->
     <meta charset="UTF-8">
 
@@ -21,6 +22,7 @@
 
     <!-- Script -->
     <script type="module" src="scripts/app.js" defer></script>
+
 </head>
 <body>
     
@@ -65,7 +67,8 @@
                     enjoy the most amazing sights and experiences that the universe has to offer.
                 </p>
                 <p>
-                    Sign up today and receive a <strong>50%</strong> discount for you and your family.
+                    Sign up today and receive a <strong>50%</strong> discount for the first 5 
+                    tickets you purchase.
                 </p>
 
             </div>
@@ -174,20 +177,13 @@
                 <!-- Header -->
                 <div class="modal-content-header">
                     <p class="modal-title truncate">Application Submitted</p>
-                    <a href="javascript:;" id="modal_close_button"><span class="md-icon">close</span></a>
+                    <a href="javascript:;" id="modal_close_button">
+                        <span class="md-icon">close</span>
+                    </a>
                 </div>
 
                 <!-- Content -->
-                <div class="modal-internal-content">
-                    <span class="md-icon md-72">rocket_launch</span>
-                    <div class="modal-content-message">
-                        <p>
-                            Your account has been registered successfully and is being evaluated by 
-                            our team. Once this process is complete, we will contact you through 
-                            email.
-                        </p>
-                    </div>
-                </div>
+                <div class="modal-internal-content" id="modal_internal_content"><!-- modal.js --></div>
 
             </div>
 
