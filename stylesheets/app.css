@@ -176,6 +176,7 @@ body {
 .form .form-row .form-control label {
     display: block;
 }
+.form .form-row .form-control label:focus-within { font-weight: bold;}
 
 
 /* Form Control Error */
